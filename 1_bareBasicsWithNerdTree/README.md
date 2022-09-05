@@ -36,3 +36,25 @@ call plug#end()
 " Nerdtree settings; see hidden files with NerdTree
 let NERDTreeShowHidden=1
 ```
+
+Install Plugins using
+
+```vim
+:PlugInstall
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
