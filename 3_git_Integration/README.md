@@ -1,6 +1,7 @@
 # Git Integration
 
-The most important git plugin for vim or neovim personally is:
+The most important git plugin for vim or neovim 
+for me personally is:
 
 vim-gitgutter:
 https://github.com/airblade/vim-gitgutter

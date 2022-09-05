@@ -1,5 +1,16 @@
 # autocomplete and LSP easy version
 
+
+## pre-requisites
+
+For lsp, you will need:
+1. cargo rust
+https://doc.rust-lang.org/cargo/getting-started/installation.html
+2. npm
+https://nodejs.org/en/download/
+
+## long preamble...
+
 Now, we come to the part of autocompletion.
 
 The most common autocompletion engines are COC and youcompleteme.
@@ -10,7 +21,7 @@ server protocol support, I recommend vim-lsp.
 This will help to install language server protocols into your system, with
 minimal effort to result ratio. (IMO anyway)
 
-Here is the repo:
+Here is the repo
 
 https://github.com/prabirshrestha/vim-lsp
 
@@ -31,6 +42,16 @@ https://github.com/ycm-core/YouCompleteMe#lsp-configuration
 Last but not least, syntax checking with synctastic.
 
 https://github.com/vim-syntastic/syntastic
+
+Now syntastic is being deprecated, and vim-ale is its
+spiritual successor according to the author(s).
+
+Here's the link to vim-ale:
+https://github.com/dense-analysis/ale
+
+It is very powerful but you need to learn a lot.
+
+Here is a setup for all that without all the grind.
 
 If you want to use my setup, 
 Just copy and paste the following:
@@ -73,7 +94,6 @@ call plug#begin()
 
     "git gutter
     Plug 'vim-scripts/vim-gitgutter'
-    Plug 'prabirshrestha/vim-lsp' 
 
     "completion
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -89,8 +109,6 @@ call plug#begin()
     Plug 'thomasfaingnaert/vim-lsp-snippets'
     Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
-    "syntax checking
-    Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -110,15 +128,6 @@ let g:airline_theme='dark'
 let g:UltiSnipsExpandTrigger="<F4>"
 
 
-" synctastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 ```
 
@@ -135,13 +144,6 @@ When in command mode:
 "+p
 ```
 
-## synctastic setup
-
-### python
-
-```zsh
-pip3 install flake8
-```
 
 ## Other Choices
 
