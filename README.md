@@ -38,6 +38,22 @@ winget install -e --id Git.Git
 Go here:
 https://github.com/neovide/neovide/releases/tag/0.10.1
 
+Now, neovide requires OpenGL, and the main reason i use
+it is because it is preconfigured with fonts.
+
+If on a virtual machine, windows terminal does
+pretty much the same thing
+
+https://docs.microsoft.com/en-us/windows/terminal/install
+
+The only thing is that Ctrl+Shift+n will make a new terminal
+window.
+
+However, neovim sometimes uses that same key binding. So
+delete the binding in windows terminal or remap neovim.
+
+(I prefer deleting the windows terminal binding).
+
 
 ## Creating a init.vim (.vimrc will have different instructions)
 
@@ -58,6 +74,16 @@ https://github.com/neovim/pynvim
 python3 -m pip install --user --upgrade pynvim
 ```
 
+You must specify the correct python 
+path using
+
+```powershell
+let g:python3_host_prog = 'C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.7_3.7.2544.0_x64__qbz5n2kfra8p0\python.exe' 
+```
+
+The path to the binary file is WEIRD, so you got to do it
+manually. This is very important for ultisnips 
+to work pro perly.
 ## Vim Plug
 
 For basic plugins:
@@ -68,6 +94,13 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 
 ```
+
+## Rust and Other LSP support
+
+For language server protocol (LSP) you will need to install
+cargo and by extension, rust.
+
+https://doc.rust-lang.org/cargo/getting-started/installation.html
 
 
 
