@@ -55,7 +55,7 @@ Most plugins won't work on neovim without python support:
 https://github.com/neovim/pynvim
 
 ```powershell
-pip3 install --upgrade pynvim
+python3 -m pip install --user --upgrade pynvim
 ```
 
 ## Vim Plug
