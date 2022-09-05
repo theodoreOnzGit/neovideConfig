@@ -20,20 +20,20 @@ My emphasis for the setup is:
 3. IDE like functionality with autocomplete, snippets and language server 
 protocol (LSP)
 
-## Instaling Nvim
+## 1. Instaling Nvim
 
 ```powershell
 winget install Neovim.Neovim
 ```
 
-## Instaling git
+## 2. Instaling git
 
 ```powershell
 winget install -e --id Git.Git
 ```
 
 
-## installing neovide
+## 3. Installing neovide (or windows terminal)
 
 Go here:
 https://github.com/neovide/neovide/releases/tag/0.10.1
@@ -55,7 +55,7 @@ delete the binding in windows terminal or remap neovim.
 (I prefer deleting the windows terminal binding).
 
 
-## Creating a init.vim (.vimrc will have different instructions)
+## 4. Creating a init.vim (.vimrc will have different instructions)
 
 Go to create a init.vim file in:
 
@@ -64,7 +64,8 @@ mkdir ~\Appdata\Local\nvim
 notepad ~\Appdata\Local\nvim\init.vim
 ```
 
-## Python support (neovim only)
+
+## 5. Python support (neovim only)
 
 Most plugins won't work on neovim without python support:
 
@@ -84,7 +85,7 @@ let g:python3_host_prog = 'C:\Program Files\WindowsApps\PythonSoftwareFoundation
 The path to the binary file is WEIRD, so you got to do it
 manually. This is very important for ultisnips 
 to work pro perly.
-## Vim Plug
+## 6. Vim Plug
 
 For basic plugins:
 https://github.com/junegunn/vim-plug
@@ -95,7 +96,7 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
 
 ```
 
-## Rust and Other LSP support
+## 7. Rust and Other LSP support
 
 For language server protocol (LSP) you will need to install
 cargo and by extension, rust.
