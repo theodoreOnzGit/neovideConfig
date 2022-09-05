@@ -1,4 +1,4 @@
-# Asthetics and Conveneince
+# Asthetics 
 Here are things to make vim pleasing to the eyes
 
 Just copy and paste the following:
@@ -7,6 +7,7 @@ Just copy and paste the following:
 ## init.vim
 
 ```vim
+
 " here are line number setups to help you move around using
 " hjkl
 set relativenumber
@@ -27,29 +28,26 @@ set scrolloff=5
 
 "Plugins (only Nerdtree here)
 " i use vim-plug here
+"vim-airline for status bars at the bottom of your vim
 
 call plug#begin()
-  Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Nerdtree settings; see hidden files with NerdTree
 let NERDTreeShowHidden=1
 
 "gruvbox colour theme
-call plug#begin()
-  Plug 'morhetz/gruvbox'
-call plug#end()
 
 colorscheme gruvbox
 set background=dark
 
-"vim-airline for status bars at the bottom of your vim
 
-call plug#begin()
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-call plug#end()
-
+" vim-airline themes
+let g:airline_theme='dark'
 
 ```
 
@@ -57,6 +55,13 @@ Install Plugins using
 
 ```vim
 :PlugInstall
+```
+
+If you want to paste in neovide or neovim:
+
+When in command mode:
+```
+"+p
 ```
 
 
