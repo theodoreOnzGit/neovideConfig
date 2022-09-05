@@ -17,7 +17,8 @@ set number
 set nowrap
 
 " basic syntax highlighting and auto-indenting
-filetype syntax on
+syntax on
+filetype indent on
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4

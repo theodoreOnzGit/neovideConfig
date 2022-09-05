@@ -48,6 +48,16 @@ mkdir ~\Appdata\Local\nvim
 notepad ~\Appdata\Local\nvim\init.vim
 ```
 
+## Python support (neovim only)
+
+Most plugins won't work on neovim without python support:
+
+https://github.com/neovim/pynvim
+
+```powershell
+pip3 install --upgrade pynvim
+```
+
 ## Vim Plug
 
 For basic plugins:
