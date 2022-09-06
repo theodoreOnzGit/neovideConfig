@@ -16,8 +16,14 @@ an lsp client. It can talk to the autocomplete via
 async complete lsp plugins, and it also does linting or
 error checks.
 
-However, it CANNOT be a jack of all trades. We want a setup
-where each plugin does the job it is best suited to.
+However, vim-lsp-settings doesn't natively support 
+dotnet core version of C#, only mono.
+
+For that, we use omnisharp.
+http://www.omnisharp.net/
+
+Remember, we want to use each program for what it is best
+suited for.
 
 1. ALE is better for linting. 
 2. async complete is best for completions
@@ -126,7 +132,14 @@ Install Plugins using
 ```vim
 :PlugInstall
 ```
+## Prerequisites
+for this, you should have dotnet core installed (obviously):
+```powershell
+winget install Microsoft.DotNet.SDK.6
+```
 
+This is in addition to the other pre-requisties you have on
+on the main README.md page.
 
 ## other stuff..
 
