@@ -1,8 +1,9 @@
 # AutoComplete and LSP Hard version 
 
 
-This is for times where I'm not really interested in quick out of the box
-type solutions, but have LOTS of time to tinker...
+This is for times where 
+I'm not really interested in quick out of the box
+type solutions, but have more time to tinker...
 
 
 One very popular autocomplete syntax checker type engine is ALE
@@ -12,11 +13,36 @@ https://www.youtube.com/watch?v=4FKPySR6HLk
 https://github.com/dense-analysis/ale
 
 These fall into the linter and fixer category. This is extremely powerful
-but requires some kind of decent setup and tinkering to be useful.
+but requires some kind of decent setup 
+and tinkering to be useful. 
 
-I might add more here as i find out how to do so.
+## Summary
+
+We can split the lsp autocomplete and linting into:
+
+1. LSP servers
+2. LSP clients
+3. Autocomplete
+4. linting and fixing
+
+vim-lsp takes info from lsp servers, eg flake8 and acts as
+an lsp client. It can talk to the autocomplete via
+async complete lsp plugins, and it also does linting or
+error checks.
+
+However, it CANNOT be a jack of all trades. We want a setup
+where each plugin does the job it is best suited to.
+
+1. ALE is better for linting. 
+2. async complete is best for completions
+3. vim-lsp is better for interaction with lsp server and
+then talking to ALE and async complete
+
+With this philosophy, we get the following init.vim:
+
 
 ## init.vim
+Here is a basic setup for ALE:
 ```vim
 set relativenumber
 set number
