@@ -21,7 +21,8 @@ where each plugin does the job it is best suited to.
 
 1. ALE is better for linting. 
 2. async complete is best for completions
-3. omnishapr is best for lsp server interaction
+3. omnisharp is best for lsp server interaction for C#
+4. vim-lsp works okay as a lsp client for other languages
 
 With this philosophy, we get the following init.vim:
 
