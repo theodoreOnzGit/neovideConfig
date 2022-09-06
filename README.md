@@ -103,7 +103,8 @@ cargo and by extension, rust.
 
 https://doc.rust-lang.org/cargo/getting-started/installation.html
 
-
+You might also be prompted to install npm:
+https://nodejs.org/en/download/
 
 
 
