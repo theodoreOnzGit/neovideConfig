@@ -76,7 +76,9 @@ python3 -m pip install --user --upgrade pynvim
 ```
 
 You must specify the correct python 
-path using
+path using the python3_host_prog global variable.
+
+For example:
 
 ```powershell
 let g:python3_host_prog = 'C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.7_3.7.2544.0_x64__qbz5n2kfra8p0\python.exe' 
@@ -84,7 +86,24 @@ let g:python3_host_prog = 'C:\Program Files\WindowsApps\PythonSoftwareFoundation
 
 The path to the binary file is WEIRD, so you got to do it
 manually. This is very important for ultisnips 
-to work pro perly.
+to work properly.
+
+To find the correct path consistently, use:
+
+```powershell
+(get-command Python).Path
+```
+Just replace python with whatever your executable is.
+
+Or else just navigate to the WindowsApps folder seen before.
+
+You may also get a Could not contact PyPI to get latestversion.
+ie https request failed error for pynvim.
+
+Haven't figured that one yet.
+
+
+
 ## 6. Vim Plug
 
 For basic plugins:
