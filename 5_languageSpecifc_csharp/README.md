@@ -127,6 +127,12 @@ Install OmniSharp using:
 ```vim
 :OmniSharpInstall
 ```
+Install LSPs using
+
+```vim
+:LspInstallServer
+```
+
 Install Plugins using
 
 ```vim

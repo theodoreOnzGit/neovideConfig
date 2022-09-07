@@ -130,7 +130,11 @@ let g:UltiSnipsExpandTrigger="<F4>"
 
 
 ```
+Install LSPs using
 
+```vim
+:LspInstallServer
+```
 Install Plugins using
 
 ```vim
