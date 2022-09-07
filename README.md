@@ -65,7 +65,7 @@ notepad ~\Appdata\Local\nvim\init.vim
 ```
 
 
-## 5. Python support (neovim only)
+## 5. Python and npm support (neovim only)
 
 Most plugins won't work on neovim without python support:
 
@@ -88,10 +88,12 @@ The path to the binary file is WEIRD, so you got to do it
 manually. This is very important for ultisnips 
 to work properly.
 
-To find the correct path consistently, use:
+To find the correct path consistently, use one of the following:
 
 ```powershell
 (get-command Python).Path
+(get-command Python3.7).Path
+(get-command Python3.10).Path
 ```
 Just replace python with whatever your executable is.
 
@@ -127,4 +129,10 @@ https://nodejs.org/en/download/
 
 
 
+For node.js, after installing node,
+
+
+```powershell
+npm install -g neovim
+```
 
