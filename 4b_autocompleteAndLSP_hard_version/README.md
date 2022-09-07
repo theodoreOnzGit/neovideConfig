@@ -122,6 +122,12 @@ let g:ale_linters = {
 let g:airline#extensions#ale#enabled = 1
 
 ```
+Install LSPs using (this is for vim-lsp-settings)
+
+```vim
+:LspInstallServer
+```
+
 Install Plugins using
 
 ```vim
