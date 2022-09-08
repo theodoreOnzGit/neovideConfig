@@ -158,4 +158,20 @@ For node.js, after installing node,
 ```powershell
 npm install -g neovim
 ```
+ 
+
+## vanilla vim specific
+
+Some conveniences in neovim are not available in vim. 
+
+For example highlight search and incremental search are both disabled
+by default in vanilla vim.
+
+Here are a list of how to turn them back on for vanilla vim.
+Just add this to your .vimrc
+
+```vim
+set incsearch
+set hlsearch
+```
 
