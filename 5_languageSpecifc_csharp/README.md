@@ -226,7 +226,7 @@ let g:airline_theme='dark'
 " python and rust example
 let g:ale_linters = {
 \    'py' : ['vim-lsp'],
-\    'rs' : ['vim-lsp']
+\    'rs' : ['vim-lsp'],
 \    'cs' : ['OmniSharp']
 \}
 let g:airline#extensions#ale#enabled = 1
