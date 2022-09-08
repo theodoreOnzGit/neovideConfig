@@ -67,13 +67,29 @@ notepad ~\Appdata\Local\nvim\init.vim
 
 ## 5. Python and npm support (neovim only)
 
-Most plugins won't work on neovim without python support:
+### WARNING
+Some plugins won't work on neovim without python support. However,
+i must warn you, trying to get python working on windows with neovim
+is quite a pain. It's a very hit or miss thing due to pathing issues 
+amongst other things.
+
+Just cause you can get python set up on one windows VM or machine
+doesn't mean that other machines are also that easy to setup.
+
+### if you choose to install python anyway...
+
+
 
 https://github.com/neovim/pynvim
 
 ```powershell
+python3 -m pip install --user --upgrade wheel
 python3 -m pip install --user --upgrade pynvim
 ```
+
+For best results, install python from the windows store, through
+a MSI installer. You will have pathing issues later on which
+can confuse nvim.
 
 You must specify the correct python 
 path using the python3_host_prog global variable.
@@ -88,21 +104,28 @@ The path to the binary file is WEIRD, so you got to do it
 manually. This is very important for ultisnips 
 to work properly.
 
-To find the correct path consistently, use one of the following:
+It's best to do a fresh install of python, wheel and pynvim and restart
+if you cannot get this working properly...
 
+TBH i cannot exhaustively debug all the python3 issues though.
+Different windows machines have different setups and therefore 
+different pathing issues.
+
+It may be best to avoid python altogether.
+
+#### what not to do:
+using one of the following will get a python executable that 
+will not work with pynvim in neovim:
 ```powershell
 (get-command Python).Path
 (get-command Python3.7).Path
 (get-command Python3.10).Path
 ```
-Just replace python with whatever your executable is.
-
-Or else just navigate to the WindowsApps folder seen before.
+If you try this way,
 
 You may also get a Could not contact PyPI to get latestversion.
 ie https request failed error for pynvim.
 
-Haven't figured that one yet.
 
 
 
