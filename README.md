@@ -54,6 +54,20 @@ delete the binding in windows terminal or remap neovim.
 
 (I prefer deleting the windows terminal binding).
 
+### 3b. In case you are using Powershell and not Neovide
+
+In powershell when using windows terminal, if you happen
+to use windows terminal, Ctrl-Z happens to freeze neovim. 
+
+The muscle reflex on windows unfortunately is that Ctrl-Z
+will undo a change. However, if do press it by accident,
+it will suspend neovim with no way to get out
+
+one easy fix is to add this to your init.vim
+
+```vim
+
+```
 
 ## 4. Creating a init.vim (.vimrc will have different instructions)
 
