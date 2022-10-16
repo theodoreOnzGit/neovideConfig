@@ -63,11 +63,18 @@ The muscle reflex on windows unfortunately is that Ctrl-Z
 will undo a change. However, if do press it by accident,
 it will suspend neovim with no way to get out
 
+https://github.com/neovim/neovim/issues/6660
+
 one easy fix is to add this to your init.vim
 
 ```vim
-
+noremap <C-Z> u
 ```
+
+This will map control Z to 'u' on vim, which is
+the shortcut for undoing anyhow. Not that I encourage using
+Ctrl Z for undo on nvim, but at least it won't crash nvim
+so that you have to restart work!
 
 ## 4. Creating a init.vim (.vimrc will have different instructions)
 
@@ -126,6 +133,9 @@ Different windows machines have different setups and therefore
 different pathing issues.
 
 It may be best to avoid python altogether.
+
+Otherwise use a python virtual environment. That may produce
+consistent results.
 
 #### what not to do:
 using one of the following will get a python executable that 
