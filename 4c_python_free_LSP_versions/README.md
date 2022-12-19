@@ -139,6 +139,23 @@ Install Plugins using
 ```vim
 :PlugInstall
 ```
+### ALE Fixing
+
+ALE also has this ability to auto-fix the formatting of your code
+
+Here is an example you can add to your init.vim or .vimrc for rust
+
+```vim
+let g:ale_fixers = {
+\    'rust' : ['rustfmt']
+\}
+```
+
+After this, type the ALEFix command in vim to autoformat the code.
+For rust, this is limited. This feature is more well developed
+for python.
+
+
 
 ## other stuff..
 
