@@ -43,6 +43,20 @@ Install Plugins using
 :PlugInstall
 ```
 
+## Quick fix for NERDTree menu issue (Oct 2022)
+
+Now NerdTree had an annoying [bug](https://github.com/neovim/neovim/issues/20486) at one
+point where the menu kept consuming space. 
+
+In the latest vim and neovim patches, this was fixed. (as of Dec 2022)
+
+One [workaround](https://github.com/preservim/nerdtree/issues/1321) 
+then was to use the minimal menu in NERDTree.
+I used to add this to my init.vim or .vimrc.
+
+```vim
+let g:NERDTreeMinimalMenu=1
+```
 
 
 
