@@ -18,7 +18,7 @@ return require('packer').startup(function()
     use 'vim-scripts/vim-gitgutter'
 
     -- ultisnips
-    Plug 'SirVer/ultisnips'
+    use 'SirVer/ultisnips'
 
 	-- typst
 	use {'kaarmu/typst.vim', ft = {'typst'}}

@@ -26,6 +26,54 @@ project, I wanted more and more to give lua in neovim a shot.
 
 ## Intro to vimscript vs lua Config Files
 
+### prerequisites (catered for Arch Linux)
+
+Install packer via the AUR or other means:
+
+```bash
+git clone https://aur.archlinux.org/packages/nvim-packer-git.git
+```
+navigate to the folder and run:
+```bash
+makepkg -si
+```
+
+Install python neovim
+```bash
+sudo pacman -S python-pynvim
+```
+
+For many language server protocols, node and node package manager (npm)
+are an absolute must:
+
+```bash
+sudo pacman -S npm
+```
+This will also install node js.
+
+We then need to install npm for neovim.
+
+
+```bash
+# run as root
+su
+npm install -g neovim
+```
+
+Now, fugitive, tagbar, git gutter and some other 
+plugins can be installed via pacman on arch. Also if you install fzf,
+the fzf vim plugins come included.
+
+```bash
+sudo pacman -S fzf neovim-lsp_signature
+sudo pacman -S vim-fugitive vim-tagbar
+```
+
+General rule of thumb though. If you installed the package through the
+package manager such as pacman, don't reinstall it via packer or vim-plug.
+It will mess things up.
+
+
 ### init.vim vs init.lua
 
 Now, I'm assuming most who are reading already have familiarity
