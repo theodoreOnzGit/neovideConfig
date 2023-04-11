@@ -359,46 +359,58 @@ Now for package management, this is a packer config:
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+        -- Packer can manage itself
+        use 'wbthomason/packer.nvim'
 
-  -- tree, like NERDTree but another one in lua
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
+        -- tree, like NERDTree but another one in lua
+        use 'nvim-tree/nvim-tree.lua'
+        use 'nvim-tree/nvim-web-devicons'
 
-  -- typst
-  use {'kaarmu/typst.vim', ft = {'typst'}}
+        -- typst
+        use {'kaarmu/typst.vim', ft = {'typst'}}
 
-  -- treesitter
-    use {
+        -- treesitter
+        use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
         end,
-    }
+        }
 
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v2.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {                                      -- Optional
-		  'williamboman/mason.nvim',
-		  run = function()
-			  pcall(vim.cmd, 'MasonUpdate')
-		  end,
-	  },
-	  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+use {
+    'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {                                      -- Optional
+                'williamboman/mason.nvim',
+                run = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                    end,
+            },
+                {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-	  -- Autocompletion
-	  {'hrsh7th/nvim-cmp'},     -- Required
-	  {'hrsh7th/cmp-nvim-lsp'}, -- Required
-	  {'L3MON4D3/LuaSnip'},     -- Required
-  }
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+        }
 }
+use({
+        "hrsh7th/nvim-cmp",
+        requires = {
+        "quangnguyen30192/cmp-nvim-ultisnips",
+        config = function()
+        -- optional call to setup (see customization section)
+        require("cmp_nvim_ultisnips").setup{}
+        end,
+        -- If you want to enable filetype detection based on treesitter:
+        -- requires = { "nvim-treesitter/nvim-treesitter" },
+        }
+        })
 end)
 
 ```
@@ -503,6 +515,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 ```
+
+
 
 I wanted to configure [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) a
 little more because many useful LaTeX snippets already existed within
