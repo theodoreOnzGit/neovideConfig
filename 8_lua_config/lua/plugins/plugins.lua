@@ -53,6 +53,9 @@ return require('packer').startup(function()
 			{'L3MON4D3/LuaSnip'},     -- Required
 		}
 	}
+	-- your ultisnips should also be integrated into the completion
+	-- engine not just through the use of sources.
+	-- but a third party plugin also...
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
