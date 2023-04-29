@@ -15,7 +15,7 @@ return require('packer').startup(function()
     use 'morhetz/gruvbox'
 
     -- git gutter
-    use 'vim-scripts/vim-gitgutter'
+    -- use 'vim-scripts/vim-gitgutter'
 
     -- ultisnips
     use 'SirVer/ultisnips'
@@ -47,10 +47,16 @@ return require('packer').startup(function()
 			},
 			{'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-			-- Autocompletion
+			-- Autocompletion from snippets
 			{'hrsh7th/nvim-cmp'},     -- Required
 			{'hrsh7th/cmp-nvim-lsp'}, -- Required
 			{'L3MON4D3/LuaSnip'},     -- Required
+
+			-- buffer, path and commandline completion
+			{'hrsh7th/cmp-buffer'},     -- Required
+			{'hrsh7th/cmp-path'}, -- Required
+			{'hrsh7th/cmp-cmdline'}, -- Required
+
 		}
 	}
 	-- your ultisnips should also be integrated into the completion
