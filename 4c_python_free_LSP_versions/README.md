@@ -155,7 +155,59 @@ After this, type the ALEFix command in vim to autoformat the code.
 For rust, this is limited. This feature is more well developed
 for python.
 
+## LspHover and Code Actions 
 
+Based on the recommendations by the author of vim lsp, here are 
+some of the functions we can use to fully utilise our lsp 
+capability. For example, LspHover allows you to read descriptions 
+of things you just typed in. I used K for LspHover. 
+
+This is somewhat intuitive because k scrolls vim upwards. A capital 
+K brings up the description, as if you're bringing UP a popup. So the 
+idea of "up" sticks with k.
+
+The second one which is quite good is code actions. Code actions allow 
+you to do several quick fixed depending on the Lsp Server. For Rust, you 
+are allowed to remove and add imports for example.
+
+```vim
+
+" Lsp code actions and whatnot 
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+	nnoremap <buffer> gD <plug>(lsp-declaration)
+	nnoremap <buffer> <C-k> <plug>(lsp-signature-help)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    "nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <space>rn <plug>(lsp-rename)
+    nmap <buffer> [d <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]d <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+
+	nnoremap <buffer> <space>ca <plug>(lsp-code-action)
+	vnoremap <buffer> <space>ca <plug>(lsp-code-action)
+
+    " refer to doc to add more commands
+    let g:lsp_format_sync_timeout = 1000
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+```
+
+I sometimes follow the convention used by nvim-lspconfig so that it 
+is easier to switch around
 
 ## other stuff..
 
@@ -165,6 +217,8 @@ When in command mode:
 ```
 "+p
 ```
+
+
 
 
 

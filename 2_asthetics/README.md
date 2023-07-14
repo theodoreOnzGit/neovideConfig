@@ -64,6 +64,16 @@ When in command mode:
 "+p
 ```
 
+## colour columns 
+
+While not technically a plugin, colour columns help you to make sure that 
+a single line of code does not run too long.
+
+```vim
+" colour column 
+set cc=75
+```
+
 
 
 
