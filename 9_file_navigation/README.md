@@ -150,6 +150,15 @@ set spelllang=en_gb
 
 ```
 
+## Telescope and Harpoon (lua)
+
+No lua based nvim setup is quite complete without telescope and harpoon
+the input files (for Arch Linux) for a very simple harpoon and telescope 
+setup are placed here. just copy and paste. 
+
+Telescope is like fzf, but more fully featured out of the box. 
+Harpoon basically allows you to save bookmarks of important files and 
+navigate between them.
 
 
 
