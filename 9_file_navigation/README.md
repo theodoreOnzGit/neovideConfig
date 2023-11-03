@@ -2,11 +2,15 @@ Now, two of my favourite plugins whether or not you use lua are
 the fuzzy finder and the tagbar.
 
 Fuzzy finder (fzf) written in Go allows you to find files quickly 
-in your current directory. 
+in your current directory. However, the telescope plugin takes it to 
+a whole new level. 
 
 Tagbar allows you to navigate if your source file is very long. You 
 are able to see a sidepane which helps you navigate between sections 
-of code. Very sueful for LaTeX where there are long files.
+of code. Very useful for LaTeX where there are long files.
+
+The last one is harpoon, this serves as a good plugin to bookmark 
+your files.
 
 ## init.vim
 Here is a basic setup for vim-rainbow along with the previous plugins.

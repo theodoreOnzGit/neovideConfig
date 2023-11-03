@@ -1,15 +1,9 @@
 -- for spelllcheck, and line numbers and some others
 require('basic_settings.settings')
 
--- package manager
-require('plugins.plugins')
 
--- treesitter and lsp
-require('plugins.lsp')
-require('plugins.treesitter')
-
--- telescope and harpoon
-require('plugins.telescope_harpoon')
+---- telescope and harpoon
+--require('plugins.telescope_harpoon')
 
 
 -- disable netrw at the very start of your init.lua (strongly advised)
@@ -19,17 +13,16 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
 
--- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
+-- lazy plugin manager
+require('plugins')
 
+-- telescope and harpoon settings 
+require('telescope_harpoon')
+
+-- Mason Lsp Setup manager (must load after lazy plugins start)
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+-- lsp settings 
+require('lsp')

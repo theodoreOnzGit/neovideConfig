@@ -47,10 +47,10 @@ cmp.setup({
 			get_bufnrs = function()
 				return vim.api.nvim_list_bufs()
 			end
-			}
-		},
-		{ name = 'path' },
-	})
+		}
+	},
+	{ name = 'path' },
+})
 })
 
 -- keybindings
