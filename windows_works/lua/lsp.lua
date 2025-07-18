@@ -39,7 +39,7 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'vsnip' }, -- For vsnip users.
 		{ name = 'luasnip' }, -- For luasnip users.
-		{ name = 'ultisnips' }, -- For ultisnips users.
+		-- { name = 'ultisnips' }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
 		{ name = 'buffer' , option = {
 			get_bufnrs = function()
