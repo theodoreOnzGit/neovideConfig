@@ -1,28 +1,26 @@
--- for spelllcheck, and line numbers and some others
-require('basic_settings.settings')
+-- disable netrw at start of init.lua 
 
-
----- telescope and harpoon
---require('plugins.telescope_harpoon')
-
-
--- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- set termguicolors to enable highlight groups
+-- set termguicolors to enable highlight groups 
 vim.opt.termguicolors = true
 
-
--- lazy plugin manager
+-- package manager and plugins
 require('plugins')
-
--- telescope and harpoon settings 
 require('telescope_harpoon')
 
--- Mason Lsp Setup manager (must load after lazy plugins start)
+-- mason setup manager 
 require("mason").setup()
 require("mason-lspconfig").setup()
 
--- lsp settings 
+-- lsp
 require('lsp')
+
+-- hop 
+require('hop_settings')
+
+
+--basic settings, spellcheck and others
+require('basic_init')
+

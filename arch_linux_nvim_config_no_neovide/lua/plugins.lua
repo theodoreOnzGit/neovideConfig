@@ -1,32 +1,48 @@
 -- note: for lazy on Arch Linux, please install via AUR as well,
 -- it's easier...
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-    -- git gutter (may clash with ubuntu's existing git-gutter
+	-- git gutter (may clash with ubuntu's existing git-gutter
 	-- if on linux mint)
-    -- use 'vim-scripts/vim-gitgutter'
-    'preservim/nerdtree',
-    'morhetz/gruvbox',
-    'SirVer/ultisnips',
+	-- use 'vim-scripts/vim-gitgutter'
+	'preservim/nerdtree',
+	'morhetz/gruvbox',
+	--'SirVer/ultisnips',
 	'williamboman/mason.nvim',
-	'williamboman/mason-lspconfig.nvim',
-	'neovim/nvim-lspconfig',
-	'elementx54/moosefw_vim',
-	'ranjithshegde/ccls.nvim',
-	{'Myriad-Dreamin/tinymist'},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig", -- provides the defaults and configuration definitions
+		},
+		opts = {
+			-- 1. Ensure texlab is automatically downloaded by Mason
+			ensure_installed = { "texlab", "lua_ls" },
+
+			-- 2. This hook handles the v0.12 native `vim.lsp.enable` automatically
+			automatic_enable = true, 
+		}
+	},
+	{
+		"hrsh7th/nvim-cmp",
+	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
@@ -51,18 +67,6 @@ local plugins = {
 
 		}
 	},
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"quangnguyen30192/cmp-nvim-ultisnips",
-			config = function()
-				-- optional call to setup (see customization section)
-				require("cmp_nvim_ultisnips").setup{}
-			end,
-			-- If you want to enable filetype detection based on treesitter:
-			-- requires = { "nvim-treesitter/nvim-treesitter" },
-		}
-	},
 
 	-- telescope 
 	{
@@ -73,10 +77,8 @@ local plugins = {
 
 	-- harpoon 
 	'ThePrimeagen/harpoon',
-	-- treesitter
-	'nvim-treesitter/nvim-treesitter',
 
-	
+
 	-- airline 
 	'vim-airline/vim-airline',
 	'vim-airline/vim-airline-themes',
@@ -93,15 +95,18 @@ local plugins = {
 	-- vim align (in the arch repos)
 	'junegunn/vim-easy-align',
 
-    -- ultisnips and snippets
+	-- ultisnips and snippets
 	'honza/vim-snippets',
+	-- tree, like NERDTree but another one in lua
+	'nvim-tree/nvim-tree.lua',
+	'nvim-tree/nvim-web-devicons',
 
-	-- hop nvim 
+	-- hop for neovim easymotions
 	{
 		'smoka7/hop.nvim',
-		version = '*',
+		version = "*",
 		opts = {},
-	}
+	},
 }
 local opts = {}
 
@@ -110,14 +115,3 @@ vim.g.mapleader = "\\" -- Make sure to set `mapleader` before lazy so your mappi
 
 require("lazy").setup(plugins, opts)
 
--- hop 
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-
-vim.keymap.set('','f', function()
-	hop.hint_words({direction = directions.AFTERCURSOR})
-end
-, {remap=true})
-
--- ccls 
-require("ccls").setup(config)

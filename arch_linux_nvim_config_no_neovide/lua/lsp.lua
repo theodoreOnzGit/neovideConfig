@@ -1,13 +1,7 @@
-local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(client, bufnr)
-	lsp.default_keymaps({ buffer = bufnr })
-end)
 
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
+-- mason lspconfig setup
+require("mason-lspconfig").setup()
 
 -- for completion
 
@@ -18,9 +12,9 @@ cmp.setup({
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	window = {
@@ -40,12 +34,11 @@ cmp.setup({
 		{ name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
-		{ 
-			name = 'buffer' , option = {
-				get_bufnrs = function()
-					return vim.api.nvim_list_bufs()
-				end
-			}
+		{ name = 'buffer' , option = {
+			get_bufnrs = function()
+				return vim.api.nvim_list_bufs()
+			end
+		}
 	},
 	{ name = 'path' },
 })
@@ -92,3 +85,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, opts)
 	end,
 })
+
+-- require'nvim-treesitter.configs'.setup {
+--   -- A list of parser names, or "all" (the five listed parsers should always be installed)
+--   -- Apparently markdown parser is required for rust lsp
+--   ensure_installed = {"markdown","lua"},
+-- 
+--   -- Install parsers synchronously (only applied to `ensure_installed`)
+--   sync_install = false,
+-- 
+--   -- Automatically install missing parsers when entering buffer
+--   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+--   auto_install = true,
+-- 
+-- }
