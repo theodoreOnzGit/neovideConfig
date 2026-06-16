@@ -33,6 +33,27 @@ local plugins = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
       "MunifTanjim/nui.nvim",
     },
+    -- NERDTree-style in-tree keymaps (these override neo-tree's defaults)
+    opts = {
+      window = {
+        mappings = {
+          ["o"] = "open",         -- open file / toggle folder (NERDTree)
+          ["t"] = "open_tabnew",  -- open in a new tab
+          ["i"] = "open_split",   -- open in a horizontal split (NERDTree)
+          ["s"] = "open_vsplit",  -- open in a vertical split (NERDTree)
+          ["R"] = "refresh",      -- refresh the tree
+        },
+      },
+      filesystem = {
+        window = {
+          mappings = {
+            ["I"] = "toggle_hidden", -- toggle hidden files (NERDTree)
+            ["P"] = "navigate_up",   -- go up to the parent directory
+            ["C"] = "set_root",      -- make the selected directory the root
+          },
+        },
+      },
+    },
   },
 
   -- colorscheme. priority 1000 so it loads before other plugins; the config

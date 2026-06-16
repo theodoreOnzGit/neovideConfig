@@ -155,6 +155,13 @@ configs are plain Neovim.
       the old config. (hop "wasn't working" before only because no keymap was
       bound — the hop_settings.lua keymap file was intentionally not ported.)
 
+16. **neo-tree given NERDTree-style in-tree keymaps.** Added `opts.window.mappings`
+    (and `opts.filesystem.window.mappings`) to the neo-tree spec in `plugins.lua`,
+    overriding neo-tree's defaults: `o` open file/toggle folder, `t` open in tab,
+    `i` horizontal split, `s` vertical split, `R` refresh, `I` toggle hidden,
+    `P` navigate up, `C` set root. The headline request was `o` = open. Verified
+    by opening the neo-tree buffer headless and reading its keymaps.
+
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
 - If custom rust-analyzer settings are ever needed, add a
