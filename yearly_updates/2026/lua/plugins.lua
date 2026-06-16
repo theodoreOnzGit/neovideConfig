@@ -75,7 +75,10 @@ local plugins = {
     "stevearc/aerial.nvim",
     opts = {},
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+      -- Pin treesitter to the stable `master` branch. Its default branch is now
+      -- `main` (a rewrite) which removed the `ft_to_lang` API that telescope
+      -- 0.1.x calls for syntax-highlighted previews -> errors without this pin.
+      { "nvim-treesitter/nvim-treesitter", branch = "master", build = ":TSUpdate" },
       "nvim-tree/nvim-web-devicons",
     },
   },

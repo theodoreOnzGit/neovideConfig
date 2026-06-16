@@ -162,6 +162,19 @@ configs are plain Neovim.
     `P` navigate up, `C` set root. The headline request was `o` = open. Verified
     by opening the neo-tree buffer headless and reading its keymaps.
 
+17. **`\ff` finder prefix + harpoon/treesitter error fix.**
+    - Telescope finders rebound from `<leader>f*` to a literal `\` prefix per the
+      author: `\ff` (find_files), `\fb` (buffers), `\fh` (help_tags) in
+      `telescope_harpoon.lua`. Harpoon keymaps stay on `<leader>` (Space).
+    - **Bug fixed:** opening harpoon's telescope picker threw an `ft_to_lang`
+      error. Root cause: `nvim-treesitter` installed on its new default `main`
+      branch (a rewrite that removed `ft_to_lang`), while telescope 0.1.x calls
+      `require("nvim-treesitter.parsers").ft_to_lang` for previews. Fix: pinned
+      the aerial dependency to `{ "nvim-treesitter/nvim-treesitter", branch =
+      "master", build = ":TSUpdate" }`. **Do NOT let treesitter drift back to
+      `main`** while telescope is on 0.1.x. (The harpoon "Couldn't find a valid
+      file name to mark" seen in headless was just an empty buffer, not a bug.)
+
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
 - If custom rust-analyzer settings are ever needed, add a
