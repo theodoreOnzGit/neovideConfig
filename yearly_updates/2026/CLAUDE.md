@@ -121,6 +121,30 @@ configs are plain Neovim.
     file), `<leader><Esc>` (toggle quick menu), `<leader>q` (Telescope harpoon
     marks). `<leader>` = Space.
 
+12. **README.md added** for the 2026 edition: requirements, file layout, a
+    keymap quick-reference (telescope/harpoon/blink bindings + Neovim native
+    default LSP keymaps), and per-plugin usage for neo-tree, aerial, hop, mason,
+    blink, luasnip. Note: `gd` is documented as Neovim's built-in *go to local
+    declaration* (the author confirmed they rely on it); LSP cross-file
+    definition would need an explicit map. Snippet *content* (friendly-snippets
+    etc.) intentionally deferred — luasnip ships none by default.
+13. **Deployed to `~/.config/nvim`.** The 2026 edition was copied into the live
+    Arch config. The previous live config (which matched
+    `arch_linux_nvim_config_no_neovide/`) was backed up to a timestamped
+    `~/.config/nvim.bak-<timestamp>` folder before overwriting. The old config
+    also still lives in the repo at `arch_linux_nvim_config_no_neovide/` as
+    reference. Validated with a headless `Lazy! sync` + clean load.
+
+14. **Claude Code integration (`coder/claudecode.nvim`).** Added to
+    `plugins.lua`. Key requirement: it must NOT error/crash Neovim when the
+    `claude` CLI is unavailable (e.g. Windows). Achieved with
+    `cond = function() return vim.fn.executable("claude") == 1 end` — when the
+    CLI is absent, lazy treats the plugin as a no-op (installed but not loaded/
+    configured, no commands). Also lazy-loaded via `cmd = { ClaudeCode, ... }`
+    and `terminal = { provider = "native" }` to avoid a snacks.nvim dependency.
+    Keymaps left to the author (point them at `:ClaudeCode` etc.; optionally
+    guard them with the same `executable("claude")` check).
+
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
 - If custom rust-analyzer settings are ever needed, add a

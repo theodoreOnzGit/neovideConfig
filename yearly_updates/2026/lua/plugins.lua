@@ -108,6 +108,18 @@ local plugins = {
     version = "*",
     dependencies = { "L3MON4D3/LuaSnip" },
   },
+
+  -- Claude Code in the editor. `cond` makes the whole plugin a no-op when the
+  -- `claude` CLI isn't on PATH, so Neovim never errors on machines without it
+  -- (e.g. Windows). It also only loads when one of its commands is run.
+  {
+    "coder/claudecode.nvim",
+    cond = function() return vim.fn.executable("claude") == 1 end,
+    cmd = { "ClaudeCode", "ClaudeCodeFocus", "ClaudeCodeSend", "ClaudeCodeAdd" },
+    opts = {
+      terminal = { provider = "native" }, -- avoids extra UI deps like snacks.nvim
+    },
+  },
 }
 
 local opts = {
