@@ -24,3 +24,6 @@ require("lsp")
 
 -- fuzzy finder + harpoon keymaps
 require("telescope_harpoon")
+
+-- custom keymaps (LSP definition, neo-tree toggle, hop)
+require("keymaps")

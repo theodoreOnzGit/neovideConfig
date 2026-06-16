@@ -145,6 +145,16 @@ configs are plain Neovim.
     Keymaps left to the author (point them at `:ClaudeCode` etc.; optionally
     guard them with the same `executable("claude")` check).
 
+15. **Custom keymaps added (`lua/keymaps.lua`, required from `init.lua`).** During
+    testing the author asked for three bindings (leader = Space):
+    - `<leader>gd` → `vim.lsp.buf.definition` (LSP go-to-definition, so it jumps
+      to the real function — NOT the built-in local-declaration `gd`).
+    - `<leader>e` → `:Neotree toggle`.
+    - `f` (all modes) → `require("hop").hint_words({ current_line_only = false })`
+      so `f` starts hopping. This overrides the built-in `f` (find-char), matching
+      the old config. (hop "wasn't working" before only because no keymap was
+      bound — the hop_settings.lua keymap file was intentionally not ported.)
+
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
 - If custom rust-analyzer settings are ever needed, add a
