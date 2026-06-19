@@ -70,15 +70,16 @@ local plugins = {
   "vim-airline/vim-airline",
   "vim-airline/vim-airline-themes",
 
-  -- symbol outline (modern tagbar replacement, uses LSP/treesitter, no ctags)
+  -- symbol outline (modern tagbar replacement, no ctags). Uses its LSP backend.
+  -- We intentionally do NOT depend on nvim-treesitter: on bleeding-edge Neovim
+  -- (0.12) the archived `master` branch ships old parsers/queries that conflict
+  -- with the core treesitter highlighter ("attempt to call method 'range'..."),
+  -- while the `main` rewrite breaks telescope 0.1.x's `ft_to_lang`. Without it,
+  -- aerial uses the LSP backend and telescope uses regex preview highlighting.
   {
     "stevearc/aerial.nvim",
     opts = {},
     dependencies = {
-      -- Pin treesitter to the stable `master` branch. Its default branch is now
-      -- `main` (a rewrite) which removed the `ft_to_lang` API that telescope
-      -- 0.1.x calls for syntax-highlighted previews -> errors without this pin.
-      { "nvim-treesitter/nvim-treesitter", branch = "master", build = ":TSUpdate" },
       "nvim-tree/nvim-web-devicons",
     },
   },

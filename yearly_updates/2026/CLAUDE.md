@@ -171,9 +171,21 @@ configs are plain Neovim.
       branch (a rewrite that removed `ft_to_lang`), while telescope 0.1.x calls
       `require("nvim-treesitter.parsers").ft_to_lang` for previews. Fix: pinned
       the aerial dependency to `{ "nvim-treesitter/nvim-treesitter", branch =
-      "master", build = ":TSUpdate" }`. **Do NOT let treesitter drift back to
-      `main`** while telescope is on 0.1.x. (The harpoon "Couldn't find a valid
-      file name to mark" seen in headless was just an empty buffer, not a bug.)
+      "master", build = ":TSUpdate" }`. (The harpoon "Couldn't find a valid file
+      name to mark" seen in headless was just an empty buffer, not a bug.)
+
+18. **nvim-treesitter REMOVED entirely (supersedes the decision-17 pin).** On
+    Neovim 0.12 the archived `master` branch shipped old parsers/queries that
+    landed on the runtimepath and shadowed Neovim's bundled treesitter, crashing
+    the core highlighter with `attempt to call method 'range' (a nil value)`
+    (decoration provider `nvim.treesitter.highlighter`). The `main` rewrite, in
+    turn, breaks telescope 0.1.x's `ft_to_lang`. Resolution: drop the dependency
+    from aerial's spec so nvim-treesitter is not installed at all. Verified:
+    telescope guards every `require("nvim-treesitter*")` with pcall → falls back
+    to regex preview highlighting; aerial uses its LSP backend; core treesitter
+    (Neovim's own bundled queries) highlights fine. **Do NOT re-add
+    nvim-treesitter on this Neovim version** unless using its `main` branch AND
+    replacing telescope 0.1.x with a build that dropped `ft_to_lang`.
 
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
