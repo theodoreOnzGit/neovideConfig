@@ -157,10 +157,14 @@ configs are plain Neovim.
 
 16. **neo-tree given NERDTree-style in-tree keymaps.** Added `opts.window.mappings`
     (and `opts.filesystem.window.mappings`) to the neo-tree spec in `plugins.lua`,
-    overriding neo-tree's defaults: `o` open file/toggle folder, `t` open in tab,
-    `i` horizontal split, `s` vertical split, `R` refresh, `I` toggle hidden,
-    `P` navigate up, `C` set root. The headline request was `o` = open. Verified
-    by opening the neo-tree buffer headless and reading its keymaps.
+    overriding neo-tree's defaults. Later expanded to a fuller NERDTree-faithful
+    set (still merged over neo-tree defaults, so default file-ops like `a`/`d`/`r`
+    remain): `o` open file/toggle folder, `t` open in tab, `i` horizontal split,
+    `s` vertical split, `O` expand all (recursive open), `x` close parent node,
+    `X` close all nodes, `R` refresh, `q` close window, `?` help; filesystem-only
+    `I` toggle hidden, `u`/`P` navigate up, `C` set root. The headline request was
+    `o` = open. Verified by opening the neo-tree buffer headless and reading its
+    keymaps.
 
 17. **`\ff` finder prefix + harpoon/treesitter error fix.**
     - Telescope finders rebound from `<leader>f*` to a literal `\` prefix per the

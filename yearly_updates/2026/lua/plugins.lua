@@ -37,19 +37,25 @@ local plugins = {
     opts = {
       window = {
         mappings = {
-          ["o"] = "open",         -- open file / toggle folder (NERDTree)
-          ["t"] = "open_tabnew",  -- open in a new tab
-          ["i"] = "open_split",   -- open in a horizontal split (NERDTree)
-          ["s"] = "open_vsplit",  -- open in a vertical split (NERDTree)
-          ["R"] = "refresh",      -- refresh the tree
+          ["o"] = "open",             -- open file / toggle folder (NERDTree)
+          ["t"] = "open_tabnew",      -- open in a new tab (NERDTree t)
+          ["i"] = "open_split",       -- open in a horizontal split (NERDTree i)
+          ["s"] = "open_vsplit",      -- open in a vertical split (NERDTree s)
+          ["O"] = "expand_all_nodes", -- recursively open the node (NERDTree O)
+          ["x"] = "close_node",       -- close the parent node (NERDTree x)
+          ["X"] = "close_all_nodes",  -- close everything (NERDTree X)
+          ["R"] = "refresh",          -- refresh the tree (NERDTree R)
+          ["q"] = "close_window",     -- close the tree window (NERDTree q)
+          ["?"] = "show_help",        -- show the keymap help (NERDTree ?)
         },
       },
       filesystem = {
         window = {
           mappings = {
-            ["I"] = "toggle_hidden", -- toggle hidden files (NERDTree)
+            ["I"] = "toggle_hidden", -- toggle hidden files (NERDTree I)
+            ["u"] = "navigate_up",   -- go up to the parent directory (NERDTree u)
             ["P"] = "navigate_up",   -- go up to the parent directory
-            ["C"] = "set_root",      -- make the selected directory the root
+            ["C"] = "set_root",      -- make the selected directory the root (NERDTree C)
           },
         },
       },
