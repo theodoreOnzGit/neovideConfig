@@ -25,6 +25,18 @@ configs are plain Neovim.
    open sub-decision is whether to keep mason-lspconfig for auto-enable or go
    fully manual with `vim.lsp.config(...)` + `vim.lsp.enable(...)`.
    **(Not yet implemented in the 2026 init.lua.)**
+   - **Note: `nvim-lspconfig` is NOT a competitor to native LSP — it's the data
+     native LSP enables.** `vim.lsp.enable("rust_analyzer")` doesn't contain any
+     config; it looks up a config registered under that name and activates it. On
+     0.11+, nvim-lspconfig ships each server as an `lsp/<server>.lua` file using
+     the native `vim.lsp.config()` framework, supplying the `cmd`, `filetypes`,
+     and `root_markers` (root detection) for each server. So the chain is:
+     mason-lspconfig's `automatic_enable` → `vim.lsp.enable(...)` → looks up the
+     defaults that **nvim-lspconfig** registered. That's why it's listed as a
+     dependency of mason-lspconfig (decision 6). Dropping it would mean
+     hand-writing `vim.lsp.config(...)` for `rust_analyzer`/`lua_ls`/`texlab`
+     yourself. "Drop lsp-zero, use native enable" and "keep nvim-lspconfig" are
+     not in tension.
 3. **File explorer: neo-tree replaces NERDTree and nvim-tree.** The old Arch
    config ran both NERDTree and nvim-tree side by side. The 2026 edition uses
    only `nvim-neo-tree/neo-tree.nvim` (branch `v3.x`).
