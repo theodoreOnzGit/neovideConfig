@@ -56,10 +56,22 @@ These fire only while the completion menu is visible:
 | `<C-b>` / `<C-f>` | Scroll the documentation up / down |
 | `<Tab>` / `<S-Tab>` | Jump to next / previous snippet placeholder |
 
+### Custom keymaps (bound by this config)
+
+Defined in `lua/keymaps.lua` (leader = Space):
+
+| Key | Action |
+|-----|--------|
+| `<leader>gd` | LSP go to definition (cross-file, `vim.lsp.buf.definition`) |
+| `<leader>gr` | LSP go to references (`vim.lsp.buf.references`) |
+| `<leader>rn` | LSP rename symbol (`vim.lsp.buf.rename`) |
+| `<leader>e` | Toggle the neo-tree file explorer |
+| `f` (all modes) | hop to any word on screen (overrides built-in find-char) |
+
 ### LSP navigation (Neovim native defaults)
 
-Because servers are enabled through Neovim's native LSP, you get the built-in
-default keymaps when a server is attached (no extra config):
+Because servers are enabled through Neovim's native LSP, you also get the
+built-in default keymaps when a server is attached (no extra config):
 
 | Key | Action |
 |-----|--------|
@@ -73,9 +85,9 @@ default keymaps when a server is attached (no extra config):
 | `<C-s>` (insert) | Signature help |
 | `[d` / `]d` | Previous / next diagnostic |
 
-> `gd` is Neovim's built-in *go to local declaration* and works without LSP.
-> For cross-file LSP definition, map it explicitly, e.g.
-> `vim.keymap.set('n', 'gd', vim.lsp.buf.definition)`.
+> Note: `<leader>gd`/`<leader>gr`/`<leader>rn` above are the LSP-aware versions
+> bound by this config. The bare `gd` remains Neovim's built-in *go to local
+> declaration* (works without LSP).
 
 ---
 
@@ -83,8 +95,8 @@ default keymaps when a server is attached (no extra config):
 
 ### neo-tree — file explorer
 
-Sidebar file tree (replaces NERDTree / nvim-tree). No custom keymap is bound;
-open it with a command:
+Sidebar file tree (replaces NERDTree / nvim-tree). Toggle it with `<leader>e`
+(bound in `lua/keymaps.lua`) or a command:
 
 | Command | Action |
 |---------|--------|
@@ -92,11 +104,26 @@ open it with a command:
 | `:Neotree reveal` | Open and reveal the current file |
 | `:Neotree focus` | Jump into the tree window |
 
-Inside the tree (defaults): `<CR>`/`o` open, `<Space>` expand/collapse, `S`/`s`
-horizontal/vertical split, `a` add, `d` delete, `r` rename, `c` copy, `m` move,
-`H` toggle hidden files, `R` refresh, `?` show all mappings, `q` close.
+Inside the tree this config rebinds the keys to a **NERDTree-style** set (on top
+of neo-tree's defaults):
 
-> Tip: to bind a toggle, add `vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')`.
+| Key | Action |
+|-----|--------|
+| `o` | Open file / toggle folder |
+| `t` | Open in a new tab |
+| `i` / `s` | Open in horizontal / vertical split |
+| `O` | Recursively open the node |
+| `x` / `X` | Close parent node / close all nodes |
+| `R` | Refresh |
+| `I` | Toggle hidden files |
+| `u` / `P` | Go up to the parent directory |
+| `C` | Set the selected directory as root |
+| `q` | Close the tree |
+| `?` | Show all mappings |
+
+neo-tree's default file operations still work too: `a` add, `d` delete, `r`
+rename, `c`/`p` copy/paste. (Note `x` is remapped to close-node above, so use
+neo-tree's menu for cut if you need it.)
 
 ### aerial — symbol outline
 
@@ -114,7 +141,7 @@ Inside the aerial window: `<CR>` jump to symbol, `p` preview/scroll to it,
 ### hop — fast on-screen jumps
 
 EasyMotion-style motion: labels jump targets so you can leap anywhere visible.
-No custom keymap is bound; use the commands (or map one):
+This config binds `f` (all modes) to hop-to-word; you can also use the commands:
 
 | Command | Action |
 |---------|--------|
