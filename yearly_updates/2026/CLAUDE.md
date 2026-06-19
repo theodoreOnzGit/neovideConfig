@@ -162,7 +162,7 @@ configs are plain Neovim.
     remain): `o` open file/toggle folder, `t` open in tab, `i` horizontal split,
     `s` vertical split, `O` expand all (recursive open), `x` close parent node,
     `X` close all nodes, `R` refresh, `q` close window, `?` help; filesystem-only
-    `I` toggle hidden, `u`/`P` navigate up, `C` set root. The headline request was
+    `I` toggle hidden, `u`/`U`/`P` navigate up, `C` set root. The headline request was
     `o` = open. Verified by opening the neo-tree buffer headless and reading its
     keymaps.
 
