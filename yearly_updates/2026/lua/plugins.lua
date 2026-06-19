@@ -54,6 +54,7 @@ local plugins = {
           mappings = {
             ["I"] = "toggle_hidden", -- toggle hidden files (NERDTree I)
             ["u"] = "navigate_up",   -- go up to the parent directory (NERDTree u)
+            ["U"] = "navigate_up",   -- go up to the parent directory (NERDTree U)
             ["P"] = "navigate_up",   -- go up to the parent directory
             ["C"] = "set_root",      -- make the selected directory the root (NERDTree C)
           },

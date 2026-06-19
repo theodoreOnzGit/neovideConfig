@@ -116,7 +116,7 @@ of neo-tree's defaults):
 | `x` / `X` | Close parent node / close all nodes |
 | `R` | Refresh |
 | `I` | Toggle hidden files |
-| `u` / `P` | Go up to the parent directory |
+| `u` / `U` / `P` | Go up to the parent directory |
 | `C` | Set the selected directory as root |
 | `q` | Close the tree |
 | `?` | Show all mappings |
