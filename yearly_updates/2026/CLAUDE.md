@@ -203,6 +203,18 @@ configs are plain Neovim.
     nvim-treesitter on this Neovim version** unless using its `main` branch AND
     replacing telescope 0.1.x with a build that dropped `ft_to_lang`.
 
+19. **Disable mouse in terminal buffers (`settings.lua`).** TUI apps like
+    Claude Code enable terminal mouse reporting (`\x1b[?1000h`), which causes
+    Neovim to forward every click/drag to the app instead of doing an OS-level
+    text selection — corrupting the display when the user tries to select text
+    with the mouse. Fix: a `TermOpen` autocmd sets `mouse=""` locally for every
+    terminal buffer. Mouse still works normally in all other buffers.
+    ```lua
+    vim.api.nvim_create_autocmd("TermOpen", {
+        callback = function() vim.opt_local.mouse = "" end,
+    })
+    ```
+
 ## TODO / not yet done
 - vim-latex intentionally dropped (see decision 7); LaTeX = texlab + luasnip.
 - If custom rust-analyzer settings are ever needed, add a

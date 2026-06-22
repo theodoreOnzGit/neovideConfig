@@ -34,3 +34,9 @@ filetype plugin indent on
 vim.cmd([[
 autocmd BufNewFile,BufRead *.tex set filetype=tex
 ]])
+
+-- disable mouse in terminal buffers so OS-level text selection works
+-- without fighting the terminal app's mouse protocol (e.g. Claude Code)
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function() vim.opt_local.mouse = "" end,
+})
